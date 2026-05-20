@@ -9,20 +9,20 @@
 
   <style>
     :root {
-      --bg: #0d0f12;
-      --bg-soft: #15181d;
-      --card: #1b1f26;
-      --card-light: #222733;
-      --text: #f4f6f8;
-      --muted: #a8b0bd;
-      --muted-2: #7d8795;
+      --bg: #07080a;
+      --bg-soft: #111318;
+      --card: rgba(18, 20, 26, 0.86);
+      --card-light: rgba(255, 255, 255, 0.055);
+      --text: #f6f7f9;
+      --muted: #b7beca;
+      --muted-2: #8b94a3;
       --accent: #e11d2e;
-      --accent-dark: #a81422;
-      --line: rgba(255, 255, 255, 0.1);
-      --success: #42d392;
+      --accent-2: #7f111b;
+      --line: rgba(255, 255, 255, 0.12);
+      --success: #36d08a;
       --max: 1120px;
-      --radius: 18px;
-      --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+      --radius: 8px;
+      --shadow: 0 26px 80px rgba(0, 0, 0, 0.48);
     }
 
     * {
@@ -36,12 +36,28 @@
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(225, 29, 46, 0.18), transparent 34rem),
-        radial-gradient(circle at bottom right, rgba(66, 211, 146, 0.08), transparent 28rem),
-        var(--bg);
       color: var(--text);
       line-height: 1.6;
+      background:
+        linear-gradient(135deg, rgba(225, 29, 46, 0.24) 0%, rgba(7, 8, 10, 0.95) 28%, rgba(7, 8, 10, 1) 48%, rgba(127, 17, 27, 0.34) 76%, rgba(7, 8, 10, 1) 100%),
+        radial-gradient(circle at 15% 12%, rgba(225, 29, 46, 0.42), transparent 34rem),
+        radial-gradient(circle at 88% 42%, rgba(127, 17, 27, 0.34), transparent 30rem),
+        radial-gradient(circle at 30% 90%, rgba(225, 29, 46, 0.20), transparent 34rem),
+        var(--bg);
+      background-attachment: fixed;
+    }
+
+    body:before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.72), transparent 82%);
     }
 
     a {
@@ -64,7 +80,7 @@
       top: 0;
       z-index: 20;
       border-bottom: 1px solid var(--line);
-      background: rgba(13, 15, 18, 0.86);
+      background: rgba(7, 8, 10, 0.84);
       backdrop-filter: blur(14px);
     }
 
@@ -81,7 +97,6 @@
       flex-direction: column;
       gap: 2px;
       font-weight: 800;
-      letter-spacing: 0;
     }
 
     .logo span:first-child {
@@ -127,14 +142,14 @@
     }
 
     .btn.secondary {
-      background: transparent;
+      background: rgba(255, 255, 255, 0.04);
       border-color: var(--line);
       color: var(--text);
     }
 
     .btn.secondary:hover {
       border-color: rgba(255, 255, 255, 0.28);
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.08);
     }
 
     .hero {
@@ -143,7 +158,7 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.05fr 0.95fr;
       gap: 44px;
       align-items: center;
     }
@@ -181,7 +196,7 @@
     }
 
     h1 strong {
-      color: var(--accent);
+      color: #ff3345;
     }
 
     .lead {
@@ -210,7 +225,7 @@
       padding: 18px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.035);
+      background: rgba(255, 255, 255, 0.045);
     }
 
     .stat strong {
@@ -228,13 +243,10 @@
     }
 
     .visual {
-      min-height: 520px;
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      background:
-        linear-gradient(145deg, rgba(225, 29, 46, 0.18), transparent 40%),
-        linear-gradient(315deg, rgba(255, 255, 255, 0.1), transparent 40%),
-        var(--card);
+      min-height: 560px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius);
+      background: rgba(15, 17, 22, 0.78);
       box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
@@ -244,26 +256,24 @@
       justify-content: flex-end;
     }
 
-    .visual:before {
-      content: "";
+    .hero-photo {
       position: absolute;
-      inset: 42px 30px auto auto;
-      width: 170px;
-      height: 170px;
-      border-radius: 999px;
-      border: 30px solid rgba(225, 29, 46, 0.24);
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.88;
+      filter: saturate(1.02) contrast(1.06);
     }
 
     .visual:after {
       content: "";
       position: absolute;
-      left: -40px;
-      bottom: 100px;
-      width: 240px;
-      height: 80px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
-      transform: rotate(-28deg);
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(7, 8, 10, 0.96) 0%, rgba(7, 8, 10, 0.42) 48%, rgba(225, 29, 46, 0.16) 100%),
+        linear-gradient(135deg, rgba(225, 29, 46, 0.34), transparent 42%);
+      pointer-events: none;
     }
 
     .training-card {
@@ -271,8 +281,8 @@
       z-index: 2;
       padding: 24px;
       border: 1px solid var(--line);
-      border-radius: 22px;
-      background: rgba(13, 15, 18, 0.72);
+      border-radius: var(--radius);
+      background: rgba(7, 8, 10, 0.78);
       backdrop-filter: blur(10px);
     }
 
@@ -311,7 +321,7 @@
       justify-content: center;
       flex: 0 0 auto;
       border-radius: 999px;
-      background: rgba(66, 211, 146, 0.14);
+      background: rgba(54, 208, 138, 0.14);
       color: var(--success);
       font-weight: 900;
       font-size: 14px;
@@ -352,7 +362,8 @@
       padding: 26px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.04);
+      background: var(--card);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.20);
     }
 
     .card h3 {
@@ -372,38 +383,61 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border-radius: 14px;
-      background: rgba(225, 29, 46, 0.14);
+      border-radius: var(--radius);
+      background: rgba(225, 29, 46, 0.18);
       color: #ff4b59;
       font-weight: 900;
-      font-size: 20px;
+      font-size: 17px;
     }
 
     .band {
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.03);
+      background: linear-gradient(135deg, rgba(225, 29, 46, 0.10), rgba(0, 0, 0, 0.18));
     }
 
     .about {
       display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
+      grid-template-columns: 0.9fr 1.1fr;
       gap: 36px;
       align-items: center;
     }
 
     .about-box {
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      background:
-        linear-gradient(145deg, rgba(225, 29, 46, 0.2), transparent),
-        var(--card);
-      min-height: 390px;
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius);
+      background: rgba(16, 18, 24, 0.82);
+      min-height: 520px;
+      overflow: hidden;
+      position: relative;
       box-shadow: var(--shadow);
+    }
+
+    .about-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.88;
+      filter: saturate(1.03) contrast(1.06);
+    }
+
+    .about-box:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(7, 8, 10, 0.98) 0%, rgba(7, 8, 10, 0.52) 42%, rgba(127, 17, 27, 0.12) 100%),
+        linear-gradient(135deg, rgba(225, 29, 46, 0.28), transparent 46%);
+    }
+
+    .about-info {
+      position: absolute;
+      z-index: 2;
+      left: 26px;
+      right: 26px;
+      bottom: 26px;
     }
 
     .about-box .name {
@@ -414,7 +448,7 @@
 
     .place {
       color: var(--muted);
-      margin-top: 10px;
+      margin: 10px 0 0;
     }
 
     .badge-row {
@@ -429,7 +463,7 @@
       border-radius: 999px;
       padding: 8px 12px;
       color: var(--muted);
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(255, 255, 255, 0.06);
       font-size: 14px;
     }
 
@@ -454,7 +488,7 @@
       padding: 22px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.04);
+      background: var(--card);
     }
 
     .step:before {
@@ -504,8 +538,8 @@
       margin-top: 7px;
       padding: 14px 15px;
       border: 1px solid var(--line);
-      border-radius: 12px;
-      background: rgba(0, 0, 0, 0.18);
+      border-radius: var(--radius);
+      background: rgba(0, 0, 0, 0.22);
       color: var(--text);
       font: inherit;
       outline: none;
@@ -532,8 +566,8 @@
       border: 1px dashed rgba(255, 255, 255, 0.28);
       border-radius: var(--radius);
       background:
-        linear-gradient(145deg, rgba(225, 29, 46, 0.12), transparent 42%),
-        rgba(255, 255, 255, 0.035);
+        linear-gradient(135deg, rgba(225, 29, 46, 0.16), rgba(0, 0, 0, 0.12)),
+        rgba(255, 255, 255, 0.045);
       padding: 26px;
       display: flex;
       flex-direction: column;
@@ -555,6 +589,7 @@
       border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: 14px;
+      background: rgba(0, 0, 0, 0.24);
     }
 
     .footer-row {
@@ -588,7 +623,11 @@
       }
 
       .visual {
-        min-height: 420px;
+        min-height: 520px;
+      }
+
+      .about-box {
+        min-height: 520px;
       }
 
       .grid-3,
@@ -624,18 +663,23 @@
       }
 
       .card,
-      .training-card,
-      .about-box {
+      .training-card {
         padding: 22px;
+      }
+
+      .about-info {
+        left: 22px;
+        right: 22px;
+        bottom: 22px;
       }
 
       .step {
         grid-template-columns: 1fr;
       }
 
-      .visual {
-        min-height: 380px;
-        padding: 18px;
+      .visual,
+      .about-box {
+        min-height: 460px;
       }
     }
   </style>
@@ -684,13 +728,15 @@
               <span>trening personalny</span>
             </div>
             <div class="stat">
-              <strong>AI</strong>
-              <span>testy automatyzacji i formularzy</span>
+              <strong>Siedlce</strong>
+              <span>treningi w CityFit Blue</span>
             </div>
           </div>
         </div>
 
-        <div class="visual" aria-label="Panel treningowy">
+        <div class="visual" aria-label="Trening personalny">
+          <img class="hero-photo" src="hubert.jpg" alt="Hubert podczas treningu personalnego" />
+
           <div class="training-card">
             <small>Plan na start</small>
             <h2>Trening, dieta i nawyki w jednym kierunku.</h2>
@@ -747,39 +793,33 @@
 
         <div class="grid-3">
           <article class="card">
-            <div class="icon">💪</div>
+            <div class="icon">01</div>
             <h3>Trening personalny</h3>
             <p>Ćwiczenia dobrane do celu, możliwości i aktualnej sprawności. Bez przypadkowych zestawów.</p>
           </article>
 
           <article class="card">
-            <div class="icon">🥗</div>
+            <div class="icon">02</div>
             <h3>Doradztwo dietetyczne</h3>
             <p>Proste wskazówki żywieniowe, które pomagają schudnąć bez komplikowania codziennych posiłków.</p>
           </article>
 
           <article class="card">
-            <div class="icon">📊</div>
+            <div class="icon">03</div>
             <h3>Monitorowanie postępów</h3>
             <p>Pomiary, analiza składu ciała Tanita i wnioski, dzięki którym wiemy, co działa.</p>
           </article>
 
           <article class="card">
-            <div class="icon">📱</div>
+            <div class="icon">04</div>
             <h3>Stały kontakt</h3>
             <p>Wsparcie w tygodniu, odpowiedzi na pytania i korekty, kiedy coś przestaje pasować.</p>
           </article>
 
           <article class="card">
-            <div class="icon">🏠</div>
+            <div class="icon">05</div>
             <h3>Zadania domowe</h3>
             <p>Krótka praca między treningami: ruch, mobilność, kroki, nawyki i proste cele tygodniowe.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon">🤖</div>
-            <h3>Testy AI i automatyzacji</h3>
-            <p>Strona będzie miejscem do sprawdzania formularzy, chatbota AI, Dify i usprawnień kontaktu.</p>
           </article>
         </div>
       </div>
@@ -788,16 +828,18 @@
     <section id="o-mnie">
       <div class="container about">
         <div class="about-box">
-          <div>
+          <img class="about-photo" src="hubert.jpg" alt="Hubert, trener personalny w Siedlcach" />
+
+          <div class="about-info">
             <div class="name">Hubert<br />Trener personalny</div>
             <p class="place">Siedlce · CityFit Blue</p>
-          </div>
 
-          <div class="badge-row">
-            <span class="badge">redukcja wagi</span>
-            <span class="badge">siła</span>
-            <span class="badge">sprawność</span>
-            <span class="badge">zdrowe nawyki</span>
+            <div class="badge-row">
+              <span class="badge">redukcja wagi</span>
+              <span class="badge">siła</span>
+              <span class="badge">sprawność</span>
+              <span class="badge">zdrowe nawyki</span>
+            </div>
           </div>
         </div>
 
@@ -874,7 +916,7 @@
           </div>
 
           <div class="chat-placeholder" id="chatbot">
-            <h3>Miejsce na chatbota AI</h3>
+            <h3>Miejsce na chatbota</h3>
             <p>Tu możesz wkleić kod widgetu Dify, kiedy będziesz gotowy do testów.</p>
 
             <!-- TUTAJ WKLEJ KOD CHATBOTA DIFY -->
@@ -921,7 +963,7 @@
   <footer>
     <div class="container footer-row">
       <span>© Trener Hubert · Siedlce</span>
-      <span>Trening personalny · CityFit Blue · AI lab</span>
+      <span>Trening personalny · CityFit Blue</span>
     </div>
   </footer>
 </body>
