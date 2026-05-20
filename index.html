@@ -4,24 +4,22 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Trener Hubert | Trening personalny Siedlce</title>
-  <meta name="description" content="Trening personalny w Siedlcach. Pomoc dla osób początkujących i zapracowanych: redukcja wagi, siła, sprawność i lepsze samopoczucie." />
+  <meta name="description" content="Treningi personalne w Siedlcach. Pomagam osobom początkującym i zapracowanym schudnąć, wzmocnić ciało i poprawić sprawność." />
 
   <style>
     :root {
-      --bg: #07080a;
-      --bg-soft: #111318;
-      --card: rgba(18, 20, 26, 0.86);
-      --card-light: rgba(255, 255, 255, 0.055);
-      --text: #f6f7f9;
-      --muted: #b7beca;
-      --muted-2: #8b94a3;
-      --accent: #e11d2e;
-      --accent-2: #7f111b;
+      --bg: #050506;
+      --bg-2: #0b0d10;
+      --card: rgba(18, 20, 24, 0.78);
+      --card-2: rgba(255, 255, 255, 0.045);
+      --text: #f7f7f7;
+      --muted: #b8bec8;
+      --muted-2: #858c98;
+      --red: #f01828;
+      --red-2: #a90f1a;
       --line: rgba(255, 255, 255, 0.12);
-      --success: #36d08a;
-      --max: 1120px;
+      --max: 1160px;
       --radius: 8px;
-      --shadow: 0 26px 80px rgba(0, 0, 0, 0.48);
     }
 
     * {
@@ -36,27 +34,26 @@
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
-      line-height: 1.6;
       background:
-        linear-gradient(135deg, rgba(225, 29, 46, 0.24) 0%, rgba(7, 8, 10, 0.95) 28%, rgba(7, 8, 10, 1) 48%, rgba(127, 17, 27, 0.34) 76%, rgba(7, 8, 10, 1) 100%),
-        radial-gradient(circle at 15% 12%, rgba(225, 29, 46, 0.42), transparent 34rem),
-        radial-gradient(circle at 88% 42%, rgba(127, 17, 27, 0.34), transparent 30rem),
-        radial-gradient(circle at 30% 90%, rgba(225, 29, 46, 0.20), transparent 34rem),
-        var(--bg);
+        linear-gradient(135deg, rgba(240, 24, 40, 0.28) 0%, rgba(5, 5, 6, 0.96) 22%, #050506 45%, rgba(169, 15, 26, 0.30) 72%, #050506 100%),
+        radial-gradient(circle at 16% 8%, rgba(240, 24, 40, 0.28), transparent 32rem),
+        radial-gradient(circle at 86% 34%, rgba(240, 24, 40, 0.20), transparent 30rem),
+        #050506;
       background-attachment: fixed;
+      line-height: 1.5;
     }
 
     body:before {
       content: "";
       position: fixed;
       inset: 0;
-      z-index: -1;
       pointer-events: none;
+      z-index: -1;
       background:
         linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 64px 64px;
-      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.72), transparent 82%);
+        linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+      background-size: 70px 70px;
+      opacity: 0.42;
     }
 
     a {
@@ -65,906 +62,954 @@
     }
 
     img {
-      max-width: 100%;
       display: block;
+      max-width: 100%;
     }
 
     .container {
-      width: min(100% - 32px, var(--max));
+      width: min(100% - 48px, var(--max));
       margin: 0 auto;
     }
 
-    .topbar {
-      position: sticky;
+    .header {
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 20;
-      border-bottom: 1px solid var(--line);
-      background: rgba(7, 8, 10, 0.84);
-      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.55), transparent);
     }
 
     .nav {
-      min-height: 72px;
+      min-height: 88px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 32px;
     }
 
-    .logo {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      font-weight: 800;
+    .brand {
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-size: 28px;
     }
 
-    .logo span:first-child {
-      font-size: 18px;
+    .brand span {
+      color: var(--red);
     }
 
-    .logo span:last-child {
+    .brand small {
+      display: block;
+      margin-top: 7px;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 500;
+      letter-spacing: 2px;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 22px;
-      color: var(--muted);
-      font-size: 14px;
+      gap: 36px;
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      opacity: 0.92;
     }
 
     .nav-links a:hover {
-      color: var(--text);
+      color: var(--red);
+      opacity: 1;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 46px;
-      padding: 12px 20px;
-      border: 1px solid transparent;
-      border-radius: 999px;
-      background: var(--accent);
+      gap: 12px;
+      min-height: 52px;
+      padding: 14px 26px;
+      border: 0;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, #ff2637, #d90f1f);
       color: white;
-      font-weight: 700;
+      font: inherit;
+      font-weight: 900;
+      text-transform: uppercase;
       cursor: pointer;
+      box-shadow: 0 14px 38px rgba(240, 24, 40, 0.28);
       transition: 0.2s ease;
     }
 
     .btn:hover {
-      background: #ff3042;
       transform: translateY(-1px);
+      box-shadow: 0 18px 44px rgba(240, 24, 40, 0.36);
     }
 
-    .btn.secondary {
-      background: rgba(255, 255, 255, 0.04);
-      border-color: var(--line);
-      color: var(--text);
+    .section-title {
+      margin: 0;
+      font-size: clamp(26px, 4vw, 36px);
+      line-height: 1.05;
+      text-transform: uppercase;
+      font-weight: 900;
     }
 
-    .btn.secondary:hover {
-      border-color: rgba(255, 255, 255, 0.28);
-      background: rgba(255, 255, 255, 0.08);
+    .section-title:after {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 3px;
+      margin-top: 12px;
+      background: var(--red);
     }
 
     .hero {
-      padding: 84px 0 64px;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.76) 39%, rgba(0, 0, 0, 0.28) 68%, rgba(0, 0, 0, 0.86) 100%);
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 44px;
-      align-items: center;
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(135deg, rgba(240, 24, 40, 0.18), transparent 42%),
+        url("hubert.jpg") center right / contain no-repeat,
+        radial-gradient(circle at 74% 30%, rgba(240, 24, 40, 0.32), transparent 30rem),
+        #050506;
+    }
+
+    .hero-bg:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, #050506 0%, rgba(5, 5, 6, 0.86) 34%, rgba(5, 5, 6, 0.16) 65%, rgba(5, 5, 6, 0.74) 100%),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.20), #050506 100%);
+    }
+
+    .hero-content {
+      max-width: 560px;
+      padding-top: 90px;
     }
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 18px;
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 700;
+      color: var(--red);
+      margin: 0 0 18px;
+      font-size: 17px;
+      font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 0 8px rgba(225, 29, 46, 0.15);
-    }
-
-    h1, h2, h3 {
-      margin: 0;
-      line-height: 1.12;
-      letter-spacing: 0;
     }
 
     h1 {
-      max-width: 780px;
-      font-size: clamp(42px, 7vw, 76px);
-      font-weight: 900;
+      margin: 0;
+      font-size: clamp(48px, 7vw, 74px);
+      line-height: 0.98;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: -1px;
     }
 
-    h1 strong {
-      color: #ff3345;
+    h1 span {
+      color: var(--red);
     }
 
     .lead {
-      max-width: 650px;
-      margin: 22px 0 0;
-      color: var(--muted);
-      font-size: 19px;
+      max-width: 520px;
+      margin: 26px 0 0;
+      color: white;
+      font-size: 18px;
     }
 
-    .hero-actions {
+    .hero-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 34px;
-    }
-
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 38px;
-      max-width: 680px;
-    }
-
-    .stat {
-      padding: 18px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.045);
-    }
-
-    .stat strong {
-      display: block;
+      gap: 28px;
+      margin: 28px 0;
       color: var(--text);
-      font-size: 22px;
-      line-height: 1.1;
     }
 
-    .stat span {
-      display: block;
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .visual {
-      min-height: 560px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: var(--radius);
-      background: rgba(15, 17, 22, 0.78);
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-    }
-
-    .hero-photo {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.88;
-      filter: saturate(1.02) contrast(1.06);
-    }
-
-    .visual:after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(to top, rgba(7, 8, 10, 0.96) 0%, rgba(7, 8, 10, 0.42) 48%, rgba(225, 29, 46, 0.16) 100%),
-        linear-gradient(135deg, rgba(225, 29, 46, 0.34), transparent 42%);
-      pointer-events: none;
-    }
-
-    .training-card {
-      position: relative;
-      z-index: 2;
-      padding: 24px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(7, 8, 10, 0.78);
-      backdrop-filter: blur(10px);
-    }
-
-    .training-card small {
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 700;
-    }
-
-    .training-card h2 {
-      margin-top: 12px;
-      font-size: 30px;
-    }
-
-    .training-list {
-      list-style: none;
-      padding: 0;
-      margin: 22px 0 0;
-      display: grid;
-      gap: 12px;
-    }
-
-    .training-list li {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--muted);
-    }
-
-    .check {
-      width: 24px;
-      height: 24px;
+    .meta-item {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      flex: 0 0 auto;
-      border-radius: 999px;
-      background: rgba(54, 208, 138, 0.14);
-      color: var(--success);
-      font-weight: 900;
+      gap: 11px;
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    .meta-icon {
+      color: var(--red);
+      font-size: 25px;
+      line-height: 1;
+    }
+
+    .note {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      color: var(--muted);
       font-size: 14px;
     }
 
-    section {
-      padding: 72px 0;
+    .note span {
+      color: var(--red);
+      font-size: 20px;
     }
 
-    .section-head {
-      max-width: 720px;
-      margin-bottom: 34px;
+    .section {
+      padding: 70px 0;
+      border-bottom: 1px solid var(--line);
     }
 
-    .section-head p {
-      margin: 14px 0 0;
-      color: var(--muted);
-      font-size: 17px;
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      margin-top: 26px;
+      border-top: 0;
     }
 
-    h2 {
-      font-size: clamp(30px, 4vw, 46px);
+    .audience-item {
+      min-height: 118px;
+      padding: 0 26px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      border-right: 1px solid var(--line);
     }
 
-    .grid-3 {
+    .audience-item:last-child {
+      border-right: 0;
+    }
+
+    .big-icon {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--red);
+      font-size: 40px;
+      line-height: 1;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    .about-text {
+      margin-top: 22px;
+      color: white;
+      max-width: 430px;
+    }
+
+    .about-points {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      gap: 22px;
+      margin-top: 36px;
+      text-align: center;
     }
 
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      padding: 26px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--card);
-      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.20);
-    }
-
-    .card h3 {
-      font-size: 21px;
+    .about-point .big-icon {
       margin-bottom: 10px;
     }
 
-    .card p {
-      margin: 0;
-      color: var(--muted);
+    .offer-list {
+      list-style: none;
+      padding: 0;
+      margin: 28px 0 0;
+      display: grid;
+      gap: 18px;
     }
 
-    .icon {
-      width: 44px;
-      height: 44px;
-      margin-bottom: 18px;
+    .offer-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      color: white;
+    }
+
+    .check {
+      width: 22px;
+      height: 22px;
+      flex: 0 0 22px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border-radius: var(--radius);
-      background: rgba(225, 29, 46, 0.18);
-      color: #ff4b59;
-      font-weight: 900;
-      font-size: 17px;
-    }
-
-    .band {
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      background: linear-gradient(135deg, rgba(225, 29, 46, 0.10), rgba(0, 0, 0, 0.18));
-    }
-
-    .about {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 36px;
-      align-items: center;
-    }
-
-    .about-box {
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: var(--radius);
-      background: rgba(16, 18, 24, 0.82);
-      min-height: 520px;
-      overflow: hidden;
-      position: relative;
-      box-shadow: var(--shadow);
-    }
-
-    .about-photo {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.88;
-      filter: saturate(1.03) contrast(1.06);
-    }
-
-    .about-box:after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(to top, rgba(7, 8, 10, 0.98) 0%, rgba(7, 8, 10, 0.52) 42%, rgba(127, 17, 27, 0.12) 100%),
-        linear-gradient(135deg, rgba(225, 29, 46, 0.28), transparent 46%);
-    }
-
-    .about-info {
-      position: absolute;
-      z-index: 2;
-      left: 26px;
-      right: 26px;
-      bottom: 26px;
-    }
-
-    .about-box .name {
-      font-size: 34px;
-      font-weight: 900;
-      line-height: 1.1;
-    }
-
-    .place {
-      color: var(--muted);
-      margin: 10px 0 0;
-    }
-
-    .badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .badge {
-      border: 1px solid var(--line);
+      border: 1px solid var(--red);
       border-radius: 999px;
-      padding: 8px 12px;
-      color: var(--muted);
-      background: rgba(255, 255, 255, 0.06);
-      font-size: 14px;
-    }
-
-    .about-content p {
-      color: var(--muted);
-      font-size: 17px;
-      margin: 0 0 16px;
+      color: var(--red);
+      font-size: 13px;
+      font-weight: 900;
     }
 
     .steps {
-      counter-reset: step;
+      margin-top: 34px;
       display: grid;
-      gap: 16px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      text-align: center;
     }
 
     .step {
-      counter-increment: step;
-      display: grid;
-      grid-template-columns: 58px 1fr;
-      gap: 18px;
-      align-items: start;
-      padding: 22px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--card);
+      position: relative;
+      padding: 0 14px;
     }
 
-    .step:before {
-      content: counter(step);
-      width: 46px;
-      height: 46px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      background: var(--accent);
+    .step:not(:last-child):after {
+      content: "→";
+      position: absolute;
+      top: 24px;
+      right: -19px;
       color: white;
-      font-weight: 900;
-      font-size: 20px;
+      font-size: 34px;
+      font-weight: 300;
     }
 
     .step h3 {
-      font-size: 20px;
-      margin-bottom: 6px;
+      margin: 14px 0 8px;
+      font-size: 15px;
+      text-transform: uppercase;
     }
 
     .step p {
       margin: 0;
       color: var(--muted);
+      font-size: 14px;
     }
 
-    .contact-wrap {
+    .contact-card {
+      margin-top: 46px;
+      padding: 28px 32px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025)),
+        rgba(8, 9, 11, 0.82);
       display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 24px;
-      align-items: start;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 28px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.36);
+    }
+
+    .contact-card p {
+      color: white;
+      margin: 20px 0;
+    }
+
+    .contact-benefits {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 11px;
+      color: var(--text);
+      font-size: 14px;
     }
 
     form {
       display: grid;
-      gap: 14px;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-content: start;
     }
 
-    label {
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    input, select, textarea {
+    input,
+    select,
+    textarea {
       width: 100%;
-      margin-top: 7px;
-      padding: 14px 15px;
+      min-height: 48px;
+      padding: 13px 15px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(0, 0, 0, 0.22);
-      color: var(--text);
+      background: rgba(255, 255, 255, 0.06);
+      color: white;
       font: inherit;
       outline: none;
     }
 
-    input:focus, select:focus, textarea:focus {
-      border-color: rgba(225, 29, 46, 0.75);
-      box-shadow: 0 0 0 4px rgba(225, 29, 46, 0.12);
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(240, 24, 40, 0.16);
+    }
+
+    textarea,
+    .full {
+      grid-column: 1 / -1;
     }
 
     textarea {
-      min-height: 130px;
+      min-height: 54px;
       resize: vertical;
     }
 
-    .form-note {
-      color: var(--muted-2);
-      font-size: 13px;
-      margin: 0;
+    select option {
+      background: #101114;
+      color: white;
     }
 
-    .chat-placeholder {
-      min-height: 320px;
-      border: 1px dashed rgba(255, 255, 255, 0.28);
-      border-radius: var(--radius);
-      background:
-        linear-gradient(135deg, rgba(225, 29, 46, 0.16), rgba(0, 0, 0, 0.12)),
-        rgba(255, 255, 255, 0.045);
-      padding: 26px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 10px;
+    .submit {
+      grid-column: 1 / -1;
+      width: 100%;
     }
 
-    .chat-placeholder h3 {
-      font-size: 24px;
-    }
-
-    .chat-placeholder p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    footer {
-      padding: 32px 0;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 14px;
-      background: rgba(0, 0, 0, 0.24);
+    .footer {
+      padding: 26px 0;
+      background: rgba(0, 0, 0, 0.62);
     }
 
     .footer-row {
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
+      gap: 22px;
     }
 
-    @media (max-width: 900px) {
+    .socials {
+      display: flex;
+      gap: 22px;
+      font-size: 25px;
+    }
+
+    .footer-place {
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .chat-bubble {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 60;
+      width: 62px;
+      height: 62px;
+      border: 0;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #ff2637, #d90f1f);
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
+      box-shadow: 0 18px 48px rgba(240, 24, 40, 0.38);
+    }
+
+    .chat-window {
+      position: fixed;
+      right: 24px;
+      bottom: 98px;
+      z-index: 60;
+      width: min(360px, calc(100vw - 48px));
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(10, 11, 13, 0.96);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+      overflow: hidden;
+      display: none;
+    }
+
+    .chat-window.open {
+      display: block;
+    }
+
+    .chat-head {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .assistant-avatar {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 35% 25%, rgba(255, 255, 255, 0.25), transparent 28%),
+        linear-gradient(135deg, #ff2637, #6d0710);
+      color: white;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .chat-head strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .chat-head span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .chat-close {
+      margin-left: auto;
+      border: 0;
+      background: transparent;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .chat-body {
+      padding: 16px;
+    }
+
+    .message {
+      padding: 13px 14px;
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.075);
+      color: white;
+      font-size: 14px;
+    }
+
+    .quick {
+      display: grid;
+      gap: 9px;
+      margin-top: 14px;
+    }
+
+    .quick button {
+      width: fit-content;
+      padding: 9px 13px;
+      border: 1px solid var(--red);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--red);
+      cursor: pointer;
+      font: inherit;
+      font-size: 13px;
+    }
+
+    .chat-input {
+      display: grid;
+      grid-template-columns: 1fr 44px;
+      gap: 10px;
+      padding-top: 14px;
+      margin-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .chat-input input {
+      min-height: 44px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+
+    .send {
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--red);
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 980px) {
       .nav {
+        min-height: auto;
+        padding: 18px 0;
         align-items: flex-start;
         flex-direction: column;
-        padding: 16px 0;
       }
 
       .nav-links {
         width: 100%;
+        gap: 18px;
         overflow-x: auto;
         padding-bottom: 4px;
       }
 
       .hero {
-        padding-top: 54px;
+        min-height: auto;
+        padding: 130px 0 70px;
       }
 
-      .hero-grid,
-      .about,
-      .contact-wrap {
+      .hero-bg {
+        background:
+          linear-gradient(135deg, rgba(240, 24, 40, 0.18), transparent 42%),
+          url("hubert.jpg") bottom right / 72% auto no-repeat,
+          radial-gradient(circle at 74% 30%, rgba(240, 24, 40, 0.32), transparent 30rem),
+          #050506;
+        opacity: 0.62;
+      }
+
+      .audience-grid,
+      .two-col,
+      .contact-card {
         grid-template-columns: 1fr;
       }
 
-      .visual {
-        min-height: 520px;
+      .audience-item {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
       }
 
-      .about-box {
-        min-height: 520px;
+      .audience-item:last-child {
+        border-bottom: 0;
       }
 
-      .grid-3,
-      .grid-2 {
-        grid-template-columns: 1fr;
+      .steps {
+        grid-template-columns: 1fr 1fr;
       }
 
-      .hero-stats {
-        grid-template-columns: 1fr;
+      .step:not(:last-child):after {
+        display: none;
       }
     }
 
-    @media (max-width: 560px) {
+    @media (max-width: 620px) {
       .container {
-        width: min(100% - 24px, var(--max));
+        width: min(100% - 28px, var(--max));
+      }
+
+      .brand {
+        font-size: 23px;
       }
 
       .nav-links {
-        gap: 16px;
-        font-size: 13px;
+        font-size: 12px;
       }
 
-      .hero-actions {
+      .hero {
+        padding-top: 150px;
+      }
+
+      .hero-bg {
+        background:
+          linear-gradient(135deg, rgba(240, 24, 40, 0.20), transparent 42%),
+          url("hubert.jpg") bottom right / 92% auto no-repeat,
+          #050506;
+        opacity: 0.45;
+      }
+
+      h1 {
+        font-size: 46px;
+      }
+
+      .hero-meta,
+      .about-points,
+      .footer-row {
         flex-direction: column;
+        display: flex;
+        align-items: flex-start;
       }
 
-      .btn {
-        width: 100%;
-      }
-
-      section {
-        padding: 54px 0;
-      }
-
-      .card,
-      .training-card {
-        padding: 22px;
-      }
-
-      .about-info {
-        left: 22px;
-        right: 22px;
-        bottom: 22px;
-      }
-
-      .step {
+      .steps,
+      form {
         grid-template-columns: 1fr;
       }
 
-      .visual,
-      .about-box {
-        min-height: 460px;
+      .footer-place {
+        text-align: left;
+      }
+
+      .chat-bubble {
+        right: 16px;
+        bottom: 16px;
+      }
+
+      .chat-window {
+        right: 14px;
+        bottom: 88px;
+        width: calc(100vw - 28px);
       }
     }
   </style>
 </head>
 
 <body>
-  <header class="topbar">
+  <header class="header">
     <div class="container nav">
-      <a href="#" class="logo" aria-label="Trener Hubert">
-        <span>Trener Hubert</span>
-        <span>Trening personalny Siedlce</span>
+      <a href="#" class="brand" aria-label="Trener Hubert">
+        <span>Trener</span> Hubert
+        <small>Treningi personalne</small>
       </a>
 
       <nav class="nav-links" aria-label="Nawigacja">
-        <a href="#dla-kogo">Dla kogo</a>
-        <a href="#oferta">Oferta</a>
         <a href="#o-mnie">O mnie</a>
+        <a href="#oferta">Oferta</a>
+        <a href="#dla-kogo">Dla kogo</a>
+        <a href="#jak-to-dziala">Jak to działa</a>
         <a href="#kontakt">Kontakt</a>
+        <a class="btn" href="#kontakt">Umów konsultację</a>
       </nav>
     </div>
   </header>
 
   <main>
     <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow"><span class="dot"></span> CityFit Blue Siedlce</div>
-          <h1>Schudnij, wzmocnij ciało i poczuj się pewniej <strong>bez chaosu</strong>.</h1>
+      <div class="hero-bg"></div>
+
+      <div class="container">
+        <div class="hero-content">
+          <p class="eyebrow">Treningi personalne w Siedlcach</p>
+          <h1>Trenuj mądrze.<br />Żyj lepiej.<br /><span>Osiągaj więcej.</span></h1>
+
           <p class="lead">
-            Pomagam osobom początkującym i zapracowanym zacząć treningi w prosty, bezpieczny i konkretny sposób.
-            Bez presji. Z planem, kontrolą postępów i wsparciem w tygodniu.
+            Pomagam osobom zapracowanym i początkującym schudnąć, wzmocnić ciało i poprawić sprawność bez zbędnego kombinowania.
           </p>
 
-          <div class="hero-actions">
-            <a class="btn" href="#kontakt">Umów pierwszy kontakt</a>
-            <a class="btn secondary" href="#jak-to-dziala">Zobacz jak to działa</a>
+          <div class="hero-meta">
+            <div class="meta-item"><span class="meta-icon">⌖</span> CityFit Blue Siedlce</div>
+            <div class="meta-item"><span class="meta-icon">♙</span> Treningi 1:1</div>
           </div>
 
-          <div class="hero-stats" aria-label="Najważniejsze informacje">
-            <div class="stat">
-              <strong>3 miesiące</strong>
-              <span>czytelny plan współpracy</span>
-            </div>
-            <div class="stat">
-              <strong>1:1</strong>
-              <span>trening personalny</span>
-            </div>
-            <div class="stat">
-              <strong>Siedlce</strong>
-              <span>treningi w CityFit Blue</span>
-            </div>
-          </div>
-        </div>
+          <a class="btn" href="#kontakt">Umów darmową konsultację <span>→</span></a>
 
-        <div class="visual" aria-label="Trening personalny">
-          <img class="hero-photo" src="hubert.jpg" alt="Hubert podczas treningu personalnego" />
-
-          <div class="training-card">
-            <small>Plan na start</small>
-            <h2>Trening, dieta i nawyki w jednym kierunku.</h2>
-            <ul class="training-list">
-              <li><span class="check">✓</span> Redukcja wagi bez skrajnych diet</li>
-              <li><span class="check">✓</span> Więcej siły i sprawności na co dzień</li>
-              <li><span class="check">✓</span> Prosty system kontroli postępów</li>
-            </ul>
-          </div>
+          <div class="note"><span>♢</span> Zero zobowiązań. Sprawdzimy, czy to ma sens.</div>
         </div>
       </div>
     </section>
 
-    <section id="dla-kogo">
+    <section class="section" id="dla-kogo">
       <div class="container">
-        <div class="section-head">
-          <h2>Dla kogo jest ta współpraca?</h2>
-          <p>
-            Najczęściej pracuję z osobami, które chcą zacząć mądrze, wrócić do formy albo w końcu mieć plan,
-            którego da się trzymać przy normalnym życiu.
-          </p>
-        </div>
+        <h2 class="section-title">Dla kogo jestem?</h2>
 
-        <div class="grid-3">
-          <article class="card">
-            <div class="icon">01</div>
-            <h3>Dla początkujących</h3>
-            <p>Jeśli nie wiesz od czego zacząć, nauczę Cię techniki, tempa i prostych zasad treningu.</p>
-          </article>
+        <div class="audience-grid">
+          <div class="audience-item">
+            <div>
+              <span class="big-icon">♿</span>
+              Siedzisz dużo<br />i bolą Cię plecy
+            </div>
+          </div>
 
-          <article class="card">
-            <div class="icon">02</div>
-            <h3>Dla zapracowanych</h3>
-            <p>Ułożymy plan tak, żeby pasował do tygodnia pracy, obowiązków i realnego poziomu energii.</p>
-          </article>
+          <div class="audience-item">
+            <div>
+              <span class="big-icon">▣</span>
+              Brakuje Ci siły<br />i energii
+            </div>
+          </div>
 
-          <article class="card">
-            <div class="icon">03</div>
-            <h3>Dla wracających do formy</h3>
-            <p>Skupimy się na redukcji wagi, wzmocnieniu ciała, mobilności i lepszym samopoczuciu.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+          <div class="audience-item">
+            <div>
+              <span class="big-icon">▭</span>
+              Chcesz schudnąć<br />i poprawić sylwetkę
+            </div>
+          </div>
 
-    <section id="oferta" class="band">
-      <div class="container">
-        <div class="section-head">
-          <h2>Co otrzymujesz?</h2>
-          <p>
-            Współpraca nie kończy się na jednej godzinie treningu. Dostajesz strukturę, kontrolę i jasne kolejne kroki.
-          </p>
-        </div>
+          <div class="audience-item">
+            <div>
+              <span class="big-icon">≋</span>
+              Nie wiesz, co robić<br />na siłowni
+            </div>
+          </div>
 
-        <div class="grid-3">
-          <article class="card">
-            <div class="icon">01</div>
-            <h3>Trening personalny</h3>
-            <p>Ćwiczenia dobrane do celu, możliwości i aktualnej sprawności. Bez przypadkowych zestawów.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon">02</div>
-            <h3>Doradztwo dietetyczne</h3>
-            <p>Proste wskazówki żywieniowe, które pomagają schudnąć bez komplikowania codziennych posiłków.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon">03</div>
-            <h3>Monitorowanie postępów</h3>
-            <p>Pomiary, analiza składu ciała Tanita i wnioski, dzięki którym wiemy, co działa.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon">04</div>
-            <h3>Stały kontakt</h3>
-            <p>Wsparcie w tygodniu, odpowiedzi na pytania i korekty, kiedy coś przestaje pasować.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon">05</div>
-            <h3>Zadania domowe</h3>
-            <p>Krótka praca między treningami: ruch, mobilność, kroki, nawyki i proste cele tygodniowe.</p>
-          </article>
+          <div class="audience-item">
+            <div>
+              <span class="big-icon">◷</span>
+              Masz mało czasu,<br />ale chcesz efekty
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="o-mnie">
-      <div class="container about">
-        <div class="about-box">
-          <img class="about-photo" src="hubert.jpg" alt="Hubert, trener personalny w Siedlcach" />
+    <section class="section" id="o-mnie">
+      <div class="container two-col">
+        <div>
+          <h2 class="section-title">O mnie</h2>
+          <p class="about-text">
+            Nazywam się Hubert. Jestem trenerem personalnym w Siedlcach.
+            Sam trenuję hybrydowo: sporty walki, biegi długodystansowe i trening siłowy.
+            Wiem, jak połączyć siłę, sprawność i sylwetkę z realnym życiem, pracą i obowiązkami.
+          </p>
 
-          <div class="about-info">
-            <div class="name">Hubert<br />Trener personalny</div>
-            <p class="place">Siedlce · CityFit Blue</p>
-
-            <div class="badge-row">
-              <span class="badge">redukcja wagi</span>
-              <span class="badge">siła</span>
-              <span class="badge">sprawność</span>
-              <span class="badge">zdrowe nawyki</span>
+          <div class="about-points">
+            <div class="about-point">
+              <span class="big-icon">♙</span>
+              Indywidualne<br />podejście
+            </div>
+            <div class="about-point">
+              <span class="big-icon">◎</span>
+              Realne<br />efekty
+            </div>
+            <div class="about-point">
+              <span class="big-icon">↗</span>
+              Plan działania<br />dopasowany do Ciebie
             </div>
           </div>
         </div>
 
-        <div class="about-content">
-          <div class="section-head">
-            <h2>O mnie</h2>
-          </div>
-
-          <p>
-            Pracuję z osobami, które chcą poprawić sylwetkę, zdrowie i codzienną sprawność, ale nie chcą tracić czasu
-            na zgadywanie, co robić na siłowni.
-          </p>
-          <p>
-            Moim celem jest prowadzić Cię krok po kroku: od pierwszych treningów, przez zmianę nawyków, aż po widoczne
-            efekty i większą pewność siebie.
-          </p>
-          <p>
-            Lubię proste rozwiązania, które da się utrzymać. Dlatego łączę trening, żywienie, pomiary i kontakt
-            w tygodniu w jeden konkretny proces.
-          </p>
+        <div id="oferta">
+          <h2 class="section-title">Co otrzymujesz?</h2>
+          <ul class="offer-list">
+            <li><span class="check">✓</span> Treningi 1:1 na siłowni</li>
+            <li><span class="check">✓</span> Plan treningowy modyfikowany wraz z postępami</li>
+            <li><span class="check">✓</span> Pomoc z odżywianiem: plan lub konkretne wytyczne</li>
+            <li><span class="check">✓</span> Comiesięczne pomiary centymetrem</li>
+            <li><span class="check">✓</span> Stałe wsparcie i motywacja</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section id="jak-to-dziala" class="band">
+    <section class="section" id="jak-to-dziala">
       <div class="container">
-        <div class="section-head">
-          <h2>Jak to działa?</h2>
-          <p>
-            Zaczynamy od rozmowy i podstawowych informacji, a potem układamy plan pod Twoją sytuację.
-          </p>
-        </div>
+        <h2 class="section-title" style="text-align:center;">Jak to działa?</h2>
 
         <div class="steps">
-          <article class="step">
-            <div>
-              <h3>Pierwszy kontakt</h3>
-              <p>Wypełniasz formularz albo piszesz wiadomość. Krótko ustalamy cel, dostępność i najważniejsze ograniczenia.</p>
-            </div>
-          </article>
-
-          <article class="step">
-            <div>
-              <h3>Konsultacja i pomiary</h3>
-              <p>Sprawdzamy punkt startowy: wagę, skład ciała, tryb życia, doświadczenie treningowe i priorytety.</p>
-            </div>
-          </article>
-
-          <article class="step">
-            <div>
-              <h3>Plan działania</h3>
-              <p>Dobieramy treningi, wskazówki żywieniowe i zadania tygodniowe. Wszystko ma być jasne i wykonalne.</p>
-            </div>
-          </article>
-
-          <article class="step">
-            <div>
-              <h3>Treningi i korekty</h3>
-              <p>Regularnie trenujemy, mierzymy postęp i zmieniamy plan, gdy organizm albo grafik tego wymaga.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="kontakt">
-      <div class="container contact-wrap">
-        <div>
-          <div class="section-head">
-            <h2>Kontakt</h2>
-            <p>
-              Formularz jest na razie atrapą. Docelowo możesz podłączyć go pod automatyzację, arkusz, Dify albo inny system.
-            </p>
+          <div class="step">
+            <span class="big-icon">▤</span>
+            <h3>1. Wypełnij formularz</h3>
+            <p>Napisz kilka słów o sobie i swoim celu.</p>
           </div>
 
-          <div class="chat-placeholder" id="chatbot">
-            <h3>Miejsce na chatbota</h3>
-            <p>Tu możesz wkleić kod widgetu Dify, kiedy będziesz gotowy do testów.</p>
+          <div class="step">
+            <span class="big-icon">☎</span>
+            <h3>2. Kontakt</h3>
+            <p>Odezwę się do Ciebie i umówimy konsultację.</p>
+          </div>
 
-            <!-- TUTAJ WKLEJ KOD CHATBOTA DIFY -->
+          <div class="step">
+            <span class="big-icon">♙</span>
+            <h3>3. Plan działania</h3>
+            <p>Ustalimy plan dopasowany do Ciebie i Twojego życia.</p>
+          </div>
+
+          <div class="step">
+            <span class="big-icon">🏆</span>
+            <h3>4. Działamy</h3>
+            <p>Trenujesz, widzisz efekty i czujesz różnicę.</p>
           </div>
         </div>
 
-        <div class="card">
-          <form onsubmit="event.preventDefault(); document.getElementById('form-status').textContent='Dziękuję. To wersja testowa formularza, więc wiadomość nie została jeszcze wysłana.';">
-            <label>
-              Imię
-              <input type="text" name="name" placeholder="Np. Michał" required />
-            </label>
+        <div class="contact-card" id="kontakt">
+          <div>
+            <h2 class="section-title">Umów darmową konsultację</h2>
+            <p>Wypełnij formularz, a odezwę się do Ciebie i sprawdzimy, czy współpraca ma sens.</p>
 
-            <label>
-              Telefon lub e-mail
-              <input type="text" name="contact" placeholder="Np. 500 000 000 albo adres e-mail" required />
-            </label>
+            <ul class="contact-benefits">
+              <li><span class="check">✓</span> Szybka odpowiedź</li>
+              <li><span class="check">✓</span> Bez zobowiązań</li>
+              <li><span class="check">✓</span> Konkretnie i na temat</li>
+            </ul>
+          </div>
 
-            <label>
-              Główny cel
-              <select name="goal" required>
-                <option value="">Wybierz cel</option>
-                <option>Chcę schudnąć</option>
-                <option>Chcę wzmocnić ciało</option>
-                <option>Chcę wrócić do treningów</option>
-                <option>Chcę poprawić sprawność</option>
-                <option>Nie wiem, potrzebuję konsultacji</option>
-              </select>
-            </label>
+          <form onsubmit="event.preventDefault(); alert('To testowy formularz. Później możesz podłączyć go pod automatyzację.');">
+            <input type="text" name="name" placeholder="Imię" required />
+            <input type="tel" name="phone" placeholder="Telefon" required />
 
-            <label>
-              Wiadomość
-              <textarea name="message" placeholder="Napisz krótko, z czym startujesz i czego potrzebujesz."></textarea>
-            </label>
+            <select class="full" name="goal" required>
+              <option value="">Twój cel</option>
+              <option>Chcę schudnąć</option>
+              <option>Chcę zbudować siłę</option>
+              <option>Chcę poprawić sprawność</option>
+              <option>Chcę zacząć treningi od zera</option>
+              <option>Nie wiem, potrzebuję konsultacji</option>
+            </select>
 
-            <button class="btn" type="submit">Wyślij testowo</button>
-            <p class="form-note" id="form-status">Formularz nie wysyła jeszcze danych. To miejsce do późniejszego podłączenia automatyzacji.</p>
+            <textarea class="full" name="problem" placeholder="Z czym masz największy problem?"></textarea>
+
+            <select name="training_days" required>
+              <option value="">Ile razy w tygodniu możesz trenować?</option>
+              <option>1 raz w tygodniu</option>
+              <option>2 razy w tygodniu</option>
+              <option>3 razy w tygodniu</option>
+              <option>Jeszcze nie wiem</option>
+            </select>
+
+            <select name="contact_time" required>
+              <option value="">Wybierz porę kontaktu</option>
+              <option>Rano</option>
+              <option>Po południu</option>
+              <option>Wieczorem</option>
+            </select>
+
+            <button class="btn submit" type="submit">Wyślij zgłoszenie</button>
           </form>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
+  <footer class="footer">
     <div class="container footer-row">
-      <span>© Trener Hubert · Siedlce</span>
-      <span>Trening personalny · CityFit Blue</span>
+      <a href="#" class="brand">
+        <span>Trener</span> Hubert
+        <small>Treningi personalne</small>
+      </a>
+
+      <div class="socials" aria-label="Social media">
+        <span>◎</span>
+        <span>●</span>
+        <span>✉</span>
+      </div>
+
+      <div class="footer-place">
+        Siedlce, CityFit Blue<br />
+        © 2026 Trener Hubert
+      </div>
     </div>
   </footer>
+
+  <button class="chat-bubble" id="chatBubble" aria-label="Otwórz chatbota">▣</button>
+
+  <aside class="chat-window" id="chatWindow" aria-label="Wirtualny asystent">
+    <div class="chat-head">
+      <div class="assistant-avatar">AI</div>
+      <div>
+        <strong>Wirtualny asystent</strong>
+        <span>Trener Hubert</span>
+      </div>
+      <button class="chat-close" id="chatClose" aria-label="Zamknij chat">×</button>
+    </div>
+
+    <div class="chat-body">
+      <div class="message">
+        Cześć! Tu wirtualny asystent. Docelowo odpowiem na pytania o treningi personalne.
+        Na razie to tylko makieta pod późniejsze podłączenie Dify.
+      </div>
+
+      <div class="quick">
+        <button type="button">Dla kogo są treningi?</button>
+        <button type="button">Jak wygląda współpraca?</button>
+        <button type="button">Ile kosztują treningi?</button>
+        <button type="button">Gdzie trenujesz?</button>
+      </div>
+
+      <div class="chat-input">
+        <input type="text" placeholder="Napisz wiadomość..." />
+        <button class="send" type="button">➤</button>
+      </div>
+
+      <!-- TUTAJ WKLEJ KOD CHATBOTA DIFY -->
+    </div>
+  </aside>
+
+  <script>
+    const chatBubble = document.getElementById("chatBubble");
+    const chatWindow = document.getElementById("chatWindow");
+    const chatClose = document.getElementById("chatClose");
+
+    chatBubble.addEventListener("click", () => {
+      chatWindow.classList.toggle("open");
+    });
+
+    chatClose.addEventListener("click", () => {
+      chatWindow.classList.remove("open");
+    });
+  </script>
 </body>
 </html>
 ```
