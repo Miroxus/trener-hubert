@@ -109,6 +109,12 @@
       box-shadow: 0 18px 44px rgba(240,24,40,.38);
     }
 
+    .btn:disabled {
+      cursor: not-allowed;
+      opacity: .65;
+      transform: none;
+    }
+
     .hero {
       min-height: 720px;
       position: relative;
@@ -130,12 +136,12 @@
         linear-gradient(110deg, transparent 0%, transparent 54%, rgba(240,24,40,.11) 68%, transparent 82%);
     }
 
-   .hero-photo img {
-  position: absolute;
-  top: 72px;
-  right: max(18px, calc((100vw - var(--max)) / 2 - 90px));
-  width: min(48vw, 700px);
-  height: calc(100% - 72px);
+    .hero-photo img {
+      position: absolute;
+      top: 72px;
+      right: max(18px, calc((100vw - var(--max)) / 2 - 90px));
+      width: min(48vw, 700px);
+      height: calc(100% - 72px);
       max-width: none;
       object-fit: cover;
       object-position: center center;
@@ -434,8 +440,28 @@
       resize: vertical;
     }
 
-    .full, textarea, .submit { grid-column: 1 / -1; }
+    .full, textarea, .submit, .form-status { grid-column: 1 / -1; }
     .submit { width: 100%; }
+
+    .form-status {
+      display: none;
+      margin: 0;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .form-honeypot {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
 
     .footer {
       padding: 28px 0;
@@ -872,6 +898,7 @@
           <form id="lead-form">
             <input type="text" name="name" placeholder="Imię" required />
             <input type="tel" name="phone" placeholder="Telefon" required />
+            <input class="form-honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
             <select class="full" name="goal" required>
               <option value="">Twój cel</option>
@@ -899,6 +926,7 @@
               <option>Wieczorem</option>
             </select>
 
+            <p class="form-status" aria-live="polite"></p>
             <button class="btn submit" type="submit">Wyślij zgłoszenie</button>
           </form>
         </div>
@@ -933,100 +961,100 @@
       </div>
     </div>
   </footer>
+
   <script>
-  (function () {
-    const form = document.querySelector('#lead-form');
-    const status = form?.querySelector('.form-status');
-    const submit = form?.querySelector('.submit');
-    const webhookUrl = 'https://hook.eu2.make.com/11mmvtkupe0bwv4n4nf3u7hqgun770yq';
+    (function () {
+      const form = document.querySelector('#lead-form');
+      const status = form?.querySelector('.form-status');
+      const submit = form?.querySelector('.submit');
+      const webhookUrl = 'https://hook.eu2.make.com/11mmvtkupe0bwv4n4nf3u7hqgun770yq';
 
-    if (!form || !status || !submit) return;
+      if (!form || !status || !submit) return;
 
-    const showStatus = (message, color) => {
-      status.textContent = message;
-      status.style.display = 'block';
-      status.style.gridColumn = '1 / -1';
-      status.style.color = color;
-      status.style.margin = '0';
-    };
-
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-
-      const formData = new FormData(form);
-      if (formData.get('website')) return;
-
-      const payload = {
-        source: 'strona-trener-hubert',
-        sent_at: new Date().toISOString(),
-        page_url: window.location.href,
-        name: String(formData.get('name') || '').trim(),
-        phone: String(formData.get('phone') || '').trim(),
-        goal: String(formData.get('goal') || '').trim(),
-        problem: String(formData.get('problem') || '').trim(),
-        training_days: String(formData.get('training_days') || '').trim(),
-        contact_time: String(formData.get('contact_time') || '').trim()
+      const showStatus = (message, color) => {
+        status.textContent = message;
+        status.style.display = 'block';
+        status.style.color = color;
       };
 
-      submit.disabled = true;
-      submit.textContent = 'Wysyłam...';
-      showStatus('Wysyłam zgłoszenie. Chwila.', '#b8bec8');
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
 
-      try {
-        await fetch(webhookUrl, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-          },
-          body: new URLSearchParams(payload)
-        });
+        const formData = new FormData(form);
+        if (formData.get('website')) return;
 
-        form.reset();
-        showStatus('Dzięki. Zgłoszenie wysłane. Odezwę się do Ciebie w sprawie konsultacji.', '#dffbe8');
-      } catch (error) {
-        showStatus('Nie udało się wysłać formularza. Spróbuj ponownie albo napisz przez Instagram.', '#ffd8dc');
-      } finally {
-        submit.disabled = false;
-        submit.textContent = 'Wyślij zgłoszenie';
-      }
-    });
-  })();
-</script>
+        const payload = {
+          source: 'strona-trener-hubert',
+          sent_at: new Date().toISOString(),
+          page_url: window.location.href,
+          name: String(formData.get('name') || '').trim(),
+          phone: String(formData.get('phone') || '').trim(),
+          goal: String(formData.get('goal') || '').trim(),
+          problem: String(formData.get('problem') || '').trim(),
+          training_days: String(formData.get('training_days') || '').trim(),
+          contact_time: String(formData.get('contact_time') || '').trim()
+        };
+
+        submit.disabled = true;
+        submit.textContent = 'Wysyłam...';
+        showStatus('Wysyłam zgłoszenie. Chwila.', '#b8bec8');
+
+        try {
+          await fetch(webhookUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            },
+            body: new URLSearchParams(payload)
+          });
+
+          form.reset();
+          showStatus('Dzięki. Zgłoszenie wysłane. Odezwę się do Ciebie w sprawie konsultacji.', '#dffbe8');
+        } catch (error) {
+          showStatus('Nie udało się wysłać formularza. Spróbuj ponownie albo napisz przez Instagram.', '#ffd8dc');
+        } finally {
+          submit.disabled = false;
+          submit.textContent = 'Wyślij zgłoszenie';
+        }
+      });
+    })();
+  </script>
+
   <script>
-  window.difyChatbotConfig = {
-    token: 'ovpM36HKlvpRw4Nb',
-    inputs: {},
-    systemVariables: {},
-    userVariables: {}
-  };
-</script>
+    window.difyChatbotConfig = {
+      token: 'ovpM36HKlvpRw4Nb',
+      inputs: {},
+      systemVariables: {},
+      userVariables: {}
+    };
+  </script>
 
-<script
-  src="https://udify.app/embed.min.js"
-  id="ovpM36HKlvpRw4Nb"
-  defer>
-</script>
+  <script
+    src="https://udify.app/embed.min.js"
+    id="ovpM36HKlvpRw4Nb"
+    defer>
+  </script>
 
-<style>
-  #dify-chatbot-bubble-button {
-    background-color: #f01828 !important;
-    box-shadow: 0 14px 38px rgba(240, 24, 40, 0.35) !important;
-  }
-
-  #dify-chatbot-bubble-window {
-    width: 24rem !important;
-    height: 40rem !important;
-  }
-
-  @media (max-width: 720px) {
-    #dify-chatbot-bubble-window {
-      width: calc(100vw - 24px) !important;
-      height: 76vh !important;
-      right: 12px !important;
-      bottom: 84px !important;
+  <style>
+    #dify-chatbot-bubble-button {
+      background-color: #f01828 !important;
+      box-shadow: 0 14px 38px rgba(240, 24, 40, 0.35) !important;
     }
-  }
-</style>
+
+    #dify-chatbot-bubble-window {
+      width: 24rem !important;
+      height: 40rem !important;
+    }
+
+    @media (max-width: 720px) {
+      #dify-chatbot-bubble-window {
+        width: calc(100vw - 24px) !important;
+        height: 76vh !important;
+        right: 12px !important;
+        bottom: 84px !important;
+      }
+    }
+  </style>
 </body>
 </html>
