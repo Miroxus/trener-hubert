@@ -934,6 +934,66 @@
     </div>
   </footer>
   <script>
+  (function () {
+    const form = document.querySelector('#lead-form');
+    const status = form?.querySelector('.form-status');
+    const submit = form?.querySelector('.submit');
+    const webhookUrl = 'https://hook.eu2.make.com/11mmvtkupe0bwv4n4nf3u7hqgun770yq';
+
+    if (!form || !status || !submit) return;
+
+    const showStatus = (message, color) => {
+      status.textContent = message;
+      status.style.display = 'block';
+      status.style.gridColumn = '1 / -1';
+      status.style.color = color;
+      status.style.margin = '0';
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(form);
+      if (formData.get('website')) return;
+
+      const payload = {
+        source: 'strona-trener-hubert',
+        sent_at: new Date().toISOString(),
+        page_url: window.location.href,
+        name: String(formData.get('name') || '').trim(),
+        phone: String(formData.get('phone') || '').trim(),
+        goal: String(formData.get('goal') || '').trim(),
+        problem: String(formData.get('problem') || '').trim(),
+        training_days: String(formData.get('training_days') || '').trim(),
+        contact_time: String(formData.get('contact_time') || '').trim()
+      };
+
+      submit.disabled = true;
+      submit.textContent = 'Wysyłam...';
+      showStatus('Wysyłam zgłoszenie. Chwila.', '#b8bec8');
+
+      try {
+        await fetch(webhookUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+          },
+          body: new URLSearchParams(payload)
+        });
+
+        form.reset();
+        showStatus('Dzięki. Zgłoszenie wysłane. Odezwę się do Ciebie w sprawie konsultacji.', '#dffbe8');
+      } catch (error) {
+        showStatus('Nie udało się wysłać formularza. Spróbuj ponownie albo napisz przez Instagram.', '#ffd8dc');
+      } finally {
+        submit.disabled = false;
+        submit.textContent = 'Wyślij zgłoszenie';
+      }
+    });
+  })();
+</script>
+  <script>
   window.difyChatbotConfig = {
     token: 'ovpM36HKlvpRw4Nb',
     inputs: {},
